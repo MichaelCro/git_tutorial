@@ -139,10 +139,10 @@ git stash apply stash@{x}
 ```bash
 git push origin dev # a同事将dev分支上传至远程
 git clone https://github.com/xxx/xxx.git # b同事先拉取主分支main
-git checkout –b dev origin/dev # b同事继续同步dev分支
+git checkout -b dev origin/dev # b同事继续同步dev分支
 ```
-git checkout –b dev: 基于当前分支创建dev分支副本；<br>
-git checkout –b dev origin/dev: 本地创建dev分支，该分支为远程dev分支的副本；<br>
+git checkout -b dev: 基于当前分支创建dev分支副本；<br>
+git checkout -b dev origin/dev: 本地创建dev分支，该分支为远程dev分支的副本；<br>
 
 同事b在dev开发完成之后，需要提交到远程dev分支，可同事a在b提交之前已经完成过一次提交，那么同事b需要先git pull远程仓库，进而继续git push；
 ```bash
@@ -160,11 +160,8 @@ git push origin dev
 - git branch: 查看本地分支有哪些
 - git branch -a: 查看远程分支有哪些
 - git branch demo: 建立demo分支。（demo分支与当前分支保持一致）
-
 - git checkout demo: 切换至demo分支。
-
 - git push origin --delete dev: 删除远程dev分支
-
 - git checkout -b demo: 创建demo分支，并切换至demo分支
 
 
