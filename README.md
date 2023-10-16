@@ -112,66 +112,46 @@ git branch -d dev: 删除dev分支。<br>
 
 
 ## bug分支
-描述：当前正基于dev分支，进行bug1的修改，可进行到一半时，有一个优先级更高的bug2，现在需要有限完成bug2，bug1只能先搁置，
-
-
+描述：当前正基于dev分支，进行bug1的修改，可进行到一半时，有一个优先级更高的bug2，现在需要优先完成bug2，bug1只能先搁置。
+此时可以用到 git stash 将当前的工作现场“隐藏起来”，等以后恢复现场后继续工作。
 ```bash
-pip3 install "fschat[model_worker,webui]"
+git stash
+git checkout main
+git branch dev2 # 对应bug2
+git checkout dev2
+```
+待dev2完成开发后，切换至main分支，并进行合并，
+```bash
+git checkout main
+git merge dev2
+```
+进而回到dev分支继续开发，
+```bash
+git checkout dev
+git stash list # 查看所有stash版本
+git stash apply stash@{x}
 ```
 
 
+## 多人协作
+设定现在远程只有master主分支，a员工本地有master主分支以及dev分支，b同事需要和a同事同时进行开发，
+那么a需要先将dev分支上传到远程仓库，b再进行拉取，流程如下，
+```bash
+git push origin dev # a同事将dev分支上传至远程
+git clone https://github.com/xxx/xxx.git # b同事先拉取主分支main
+git checkout –b dev origin/dev # b同事继续同步dev分支
+```
+git checkout –b dev: 基于当前分支创建dev分支副本；<br>
+git checkout –b dev origin/dev: 本地创建dev分支，该分支为远程dev分支的副本；<br>
+
+同事b在dev开发完成之后，需要提交到远程dev分支，可同事a在b提交之前已经完成过一次提交，那么同事b需要先git pull远程仓库，进而继续git push；
+```bash
+git pull # 有可能会需要解决冲突
+git push origin dev
+```
+因此：多人协作工作模式一般是这样的：
+- 首先，可以试图用git push origin branch-name推送自己的修改.
+- 如果推送失败，则因为远程分支比你的本地更新早，需要先用git pull试图合并。
+- 如果合并有冲突，则需要解决冲突，并在本地提交。再用git push origin branch-name推送。
 
 
-## 准备工作
-- 安装和配置Git
-- 创建一个GitHub账户（如果需要）
-
-## 基本概念
-- 什么是Git？
-- 什么是版本控制？
-- 什么是仓库（Repository）？
-- 什么是提交（Commit）？
-
-## Git的基本命令
-- 初始化一个仓库
-- 添加文件到仓库
-- 提交更改
-- 查看提交历史
-- 撤销更改
-- 分支和合并基础
-- 解决冲突
-
-## 远程仓库管理
-- 连接远程仓库
-- 克隆远程仓库
-- 推送本地更改
-- 拉取远程更改
-- 解决远程冲突
-
-## 高级主题
-- Git分支策略
-- 子模块（Submodules）的使用
-- Git Hook
-- 重写提交历史
-- 使用Git GUI工具
-
-## 协作与开源
-- 协作工作流程
-- GitHub的使用
-- 贡献到开源项目
-
-## 最佳实践
-- 代码审查
-- 使用Issue跟踪问题
-- 编写有意义的提交消息
-
-## 常见问题解答
-- 解决常见的Git问题和错误
-- 有关Git的其他资源
-
-## 结语
-- 总结教程的关键点
-- 鼓励读者进一步深入学习Git
-
-## 参考资料
-- 推荐阅读的书籍、文章和其他学习资源
