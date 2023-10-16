@@ -155,3 +155,13 @@ git push origin dev
 - 如果合并有冲突，则需要解决冲突，并在本地提交。再用git push origin branch-name推送。
 
 
+
+## 常见命令汇总
+- git branch: 查看本地分支有哪些
+- git branch -a: 查看远程分支有哪些
+- git push origin --delete dev: 删除远程dev分支
+
+
+
+
+
