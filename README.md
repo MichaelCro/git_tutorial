@@ -161,6 +161,8 @@ git push origin dev
 - git branch -a: 查看远程分支有哪些
 - git branch demo: 建立demo分支。（demo分支与当前分支保持一致）
 
+- git checkout demo: 切换至demo分支。
+
 - git push origin --delete dev: 删除远程dev分支
 
 
