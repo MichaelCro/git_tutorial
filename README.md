@@ -83,7 +83,7 @@ ssh-keygen -t rsa -C "your_email@example.com"
 ```
 id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。
 
-第二步：登录github,打开” settings”中的SSH Keys页面，然后点击“Add SSH Key”,填上任意title，在Key文本框里黏贴id_rsa.pub文件的内容。<br>
+第二步：登录github,打开” settings”中的SSH Keys页面，然后点击“Add SSH Key”，填上任意title，在Key文本框里黏贴id_rsa.pub文件的内容。<br>
 第三步：登录github上，然后在右上角找到“create a new repo”创建一个新的仓库。<br>
 第四步：把本地仓库的内容推送到GitHub仓库。<br>
 ```bash
