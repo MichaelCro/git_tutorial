@@ -163,6 +163,6 @@ git push origin dev
 
 - git push origin --delete dev: 删除远程dev分支
 
-
+- git checkout -b demo: 创建demo分支，并切换至demo分支
 
 
