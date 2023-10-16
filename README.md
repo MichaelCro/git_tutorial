@@ -159,8 +159,9 @@ git push origin dev
 ## 常见命令汇总
 - git branch: 查看本地分支有哪些
 - git branch -a: 查看远程分支有哪些
-- git push origin --delete dev: 删除远程dev分支
+- git branch demo: 建立demo分支。（demo分支与当前分支保持一致）
 
+- git push origin --delete dev: 删除远程dev分支
 
 
 
