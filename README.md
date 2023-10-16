@@ -43,8 +43,8 @@ git log
 git reset --hard 
 ```
 
-git log: 查看详细版本记录
-git log --pretty=oneline: 查看简易版本记录
+git log: 查看详细版本记录<br>
+git log --pretty=oneline: 查看简易版本记录<br>
 
 
 ## 工作区/暂存区/版本库区别
@@ -60,8 +60,59 @@ git log --pretty=oneline: 查看简易版本记录
 git checkout -- readme.txt
 ```
 
+### 删除文件
+删除某个文件之后，执行，
+```bash
+git commit -m "备注信息。。。"
+```
+
+如果想恢复删除的文件（该文件没有被执行commit），执行，
+```bash
+git checkout -- file1.txt
+```
 
 
+## 远程仓库
+### 本地创建git仓库，并同步到github官网上
+第一步：创建SSH Key。
+在用户主目录下，看看有没有.ssh目录，如果有，
+再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，
+如果有的话，直接跳过此如下命令，如果没有的话，打开命令行，输入如下命令：
+```bash
+ssh-keygen -t rsa -C "your_email@example.com"
+```
+id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。
+
+第二步：登录github,打开” settings”中的SSH Keys页面，然后点击“Add SSH Key”,填上任意title，在Key文本框里黏贴id_rsa.pub文件的内容。
+第三步：登录github上，然后在右上角找到“create a new repo”创建一个新的仓库。
+第四步：把本地仓库的内容推送到GitHub仓库。
+```bash
+git remote add origin https://github.com/xxx/xxx.git
+git push origin main
+```
+### github官网创建，并同步到本地
+- 第一步：首先，登录github，创建一个新的仓库。
+- 第二步：使用 git clone 到本地库；
+
+
+
+## 创建与合并分支
+创建分支dev，并切换到该分支
+```bash
+git branch dev
+git checkout dev
+```
+在dev进行修改操作提交之后，切换到main，进而将main分支与dev进行合并
+```bash
+git checkout main
+git merge dev
+```
+git branch: 查看所有分支信息。<br>
+git branch -d dev: 删除dev分支。<br>
+
+
+## bug分支
+描述：当前正基于dev分支，进行bug1的修改，可进行到一半时，有一个优先级更高的bug2，现在需要有限完成bug2，bug1只能先搁置，
 
 
 ```bash
